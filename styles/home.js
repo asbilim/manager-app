@@ -1,4 +1,5 @@
-import { FONT,SIZES,COLORS } from "../constants";
+import { FONT,SIZES,COLORS,SPACING,BORDER_RADIUS,ELEVATION } from "../constants";
+import { StyleSheet } from "react-native";
 
 const homeStyles = StyleSheet.create({
     container: {
@@ -32,21 +33,23 @@ const homeStyles = StyleSheet.create({
       ...ELEVATION.medium,
     },
     cardTitle: {
-      fontFamily: FONT.medium,
-      fontSize: SIZES.large,
+      fontFamily: FONT.bold,
+      fontSize: SIZES.xLarge,
       color: COLORS.black,
       marginBottom: SPACING.medium,
     },
     cardSubtitle: {
       fontFamily: FONT.regular,
       fontSize: SIZES.medium,
+      fontWeight:SIZES.small,
       color: COLORS.gray,
       marginBottom: SPACING.medium,
     },
     cardText: {
       fontFamily: FONT.regular,
-      fontSize: SIZES.small,
-      color: COLORS.gray2,
+      fontSize: SIZES.medium,
+      color: COLORS.black,
+      fontWeight:SIZES.xSmall
     },
 });
 

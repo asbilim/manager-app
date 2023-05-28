@@ -1,8 +1,9 @@
-import { FONT,SIZES,COLORS } from "../constants";
+import { FONT,SIZES,COLORS,BORDER_RADIUS,SPACING,ELEVATION } from "../constants";
+import { StyleSheet } from "react-native";
 
 const cardStyles = StyleSheet.create({
     container: {
-      backgroundColor: COLORS.white,
+      backgroundColor: COLORS.black,
       borderRadius: BORDER_RADIUS.medium,
       padding: SPACING.medium,
       marginBottom: SPACING.medium,
@@ -35,7 +36,7 @@ const modalStyles = StyleSheet.create({
       alignItems: 'center',
     },
     modalContainer: {
-      backgroundColor: COLORS.white,
+      backgroundColor: COLORS.black,
       borderRadius: BORDER_RADIUS.medium,
       padding: SPACING.medium,
       ...ELEVATION.medium,
@@ -70,7 +71,7 @@ const modalStyles = StyleSheet.create({
     buttonText: {
       fontFamily: FONT.medium,
       fontSize: SIZES.medium,
-      color: COLORS.white,
+      color: COLORS.black,
     },
 });
 
@@ -90,7 +91,7 @@ const headerStyles = StyleSheet.create({
     title: {
       fontFamily: FONT.bold,
       fontSize: SIZES.medium,
-      color: COLORS.white,
+      color: COLORS.black,
     },
 });
 
@@ -106,7 +107,7 @@ const titleStyles = StyleSheet.create({
     text: {
       fontFamily: FONT.bold,
       fontSize: SIZES.medium,
-      color: COLORS.white,
+      color: COLORS.black,
     },
 });
 

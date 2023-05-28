@@ -1,15 +1,15 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { authStyles } from '../styles/auth'
-import { viewStyles } from '../styles/view'
+import { authStyles } from '../../styles/auth'
+import { viewStyles } from '../../styles/view'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { homeStyles } from '../styles/home'
-import { tick } from '../constants/image'
+import { homeStyles } from '../../styles/home'
+import { tick } from '../../constants/image'
 import { Image } from 'react-native'
-import { COLORS ,BORDER_RADIUS} from '../constants'
-import { useState } from 'react'
+import { COLORS ,BORDER_RADIUS} from '../../constants'
 import { useRouter } from 'expo-router'
+import { box } from '../../constants/image'
 
 
 
@@ -37,20 +37,6 @@ const index = () => {
 
   const router = useRouter()
 
-  const [cardData, setcardData] = useState(cardData=>cardsData)
-
-
-  const renderCard = (item,index)=>{
-        return (
-            item.isActive?(
-                <TouchableOpacity  style={{backgroundColor:COLORS.primary,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            ):
-            (
-                <TouchableOpacity  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            )
-        )
-    }
-
 
   return (
     <SafeAreaView style={authStyles.container} >
@@ -58,8 +44,8 @@ const index = () => {
         {/* decoration top buttons */}
 
         <View style={{flexDirection:"row",width:"100%",justifyContent:"space-around",paddingVertical:32}}>
+            <TouchableOpacity onPress={()=>router.push("/")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
             <TouchableOpacity  style={{backgroundColor:COLORS.primary,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            <TouchableOpacity onPress={()=>router.push("/home/step2")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
             <TouchableOpacity  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
         </View>
 
@@ -68,8 +54,8 @@ const index = () => {
 
         {/* let's add the image logo */}
 
-            <View style={[{backgroundColor:"transparent"}]}>
-                <Image source={tick} style={{width:232,height:232,resizeMode:"contain"}} />
+            <View style={[{backgroundColor:"transparent",justifyContent:"center",alignItems:"center"}]}>
+                <Image source={box} style={{width:232,height:232,resizeMode:"contain"}} />
             </View>
 
         {/* let's add the image logo */}
@@ -81,13 +67,13 @@ const index = () => {
         <View style={[authStyles.verticalContainer,{gap:2,backgroundColor:"transparent"}]}>
 
             <Text style={[homeStyles.cardTitle]}>
-                Security
+                Fast
             </Text>
             <Text style={homeStyles.cardTitle}>
-                Coontrol your security
+                Everything in single click
             </Text>
             <Text style={homeStyles.cardText}>
-                This application is build on blockchain so that you can get 100% security across websites & applications with single app.
+            Add, genreate, store, transfer, sync, export & copy all your passwords in single click. Use autofill for quick action without opening app.
             </Text>
 
         </View>
