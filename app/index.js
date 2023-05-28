@@ -8,27 +8,10 @@ import { homeStyles } from '../styles/home'
 import { tick } from '../constants/image'
 import { Image } from 'react-native'
 import { COLORS ,BORDER_RADIUS} from '../constants'
-import { useState } from 'react'
 import { useRouter } from 'expo-router'
 
 
 
-
-
-const cardsData = [
-    {
-        isActive:true,
-        name:"foo"
-    },
-    {
-        isActive:false,
-        name:"bar"
-    },
-    {
-        isActive:false,
-        name:"and"
-    },
-]
 
 
 
@@ -37,19 +20,6 @@ const index = () => {
 
   const router = useRouter()
 
-  const [cardData, setcardData] = useState(cardData=>cardsData)
-
-
-  const renderCard = (item,index)=>{
-        return (
-            item.isActive?(
-                <TouchableOpacity  style={{backgroundColor:COLORS.primary,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            ):
-            (
-                <TouchableOpacity  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            )
-        )
-    }
 
 
   return (
@@ -60,7 +30,7 @@ const index = () => {
         <View style={{flexDirection:"row",width:"100%",justifyContent:"space-around",paddingVertical:32}}>
             <TouchableOpacity  style={{backgroundColor:COLORS.primary,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
             <TouchableOpacity onPress={()=>router.push("/home/step2")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            <TouchableOpacity  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
+            <TouchableOpacity onPress={()=>router.push("/home/step3")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
         </View>
 
         {/* decoration top buttons */}

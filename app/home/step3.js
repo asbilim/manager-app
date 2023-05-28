@@ -5,30 +5,10 @@ import { viewStyles } from '../../styles/view'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { homeStyles } from '../../styles/home'
-import { tick } from '../../constants/image'
 import { Image } from 'react-native'
 import { COLORS ,BORDER_RADIUS} from '../../constants'
 import { useRouter } from 'expo-router'
-import { box } from '../../constants/image'
-
-
-
-
-
-const cardsData = [
-    {
-        isActive:true,
-        name:"foo"
-    },
-    {
-        isActive:false,
-        name:"bar"
-    },
-    {
-        isActive:false,
-        name:"and"
-    },
-]
+import { logo } from '../../constants/image'
 
 
 
@@ -45,8 +25,8 @@ const index = () => {
 
         <View style={{flexDirection:"row",width:"100%",justifyContent:"space-around",paddingVertical:32}}>
             <TouchableOpacity onPress={()=>router.push("/")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
+            <TouchableOpacity  onPress={()=>router.push("/home/step2")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
             <TouchableOpacity  style={{backgroundColor:COLORS.primary,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            <TouchableOpacity  onPress={()=>router.push("/home/step3")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
         </View>
 
         {/* decoration top buttons */}
@@ -54,8 +34,16 @@ const index = () => {
 
         {/* let's add the image logo */}
 
-            <View style={[{backgroundColor:"transparent",justifyContent:"center",alignItems:"center"}]}>
-                <Image source={box} style={{width:232,height:232,resizeMode:"contain"}} />
+            <View style={[{backgroundColor:"transparent",justifyContent:"center",alignItems:"center",gap:4}]}>
+                <Image source={logo} style={{width:232,height:232,resizeMode:"contain"}} />
+                <View style={{flexDirection:"column",gap:2,justifyContent:"center",alignItems:"center"}}>
+                    <Text style={homeStyles.title}>
+                        CypherChain
+                    </Text>
+                    <Text style={homeStyles.subtitle}>
+                        Seamless Security
+                    </Text>
+                </View>
             </View>
 
         {/* let's add the image logo */}
@@ -66,15 +54,7 @@ const index = () => {
 
         <View style={[authStyles.verticalContainer,{gap:2,backgroundColor:"transparent"}]}>
 
-            <Text style={[homeStyles.cardTitle]}>
-                Fast
-            </Text>
-            <Text style={homeStyles.cardTitle}>
-                Everything in single click
-            </Text>
-            <Text style={homeStyles.cardText}>
-            Add, genreate, store, transfer, sync, export & copy all your passwords in single click. Use autofill for quick action without opening app.
-            </Text>
+            
 
         </View>
       
