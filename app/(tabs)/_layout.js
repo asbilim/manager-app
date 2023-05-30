@@ -1,14 +1,40 @@
-import { Stack, Tabs } from "expo-router"
+import { Tabs } from "expo-router"
 import { AntDesign,MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from '@expo/vector-icons';
 import { COLORS } from "../../constants";
 import { useRouter } from "expo-router";
+import * as SplashScreen from "expo-splash-screen"
+import { useFonts } from "expo-font";
+import { Text } from "react-native";
 
 
 export default function Layout(){
 
     const router = useRouter();
+
+    const [fonts] = useFonts({
+        Regular:require("../../assets/fonts/Apercu-Regular.otf"),
+        Medium:require("../../assets/fonts/Apercu-Medium.otf"),
+        Bold:require("../../assets/fonts/Apercu-Bold.otf")
+    })
+
+    SplashScreen.preventAutoHideAsync()
+    .then((()=>console.log("showing the splash screen")))
+    .catch(()=>console.warn("something went wrong"))
+
+
+
+    if (!fonts) {
+        return null
+    }
+
+    
+
+    SplashScreen.hideAsync()
+    .then(() => console.log('Splash screen hidden'))
+    .catch(console.warn);
+
 
     return (
         <Tabs
@@ -16,12 +42,12 @@ export default function Layout(){
                 headerShown:true,
                 headerLeft:()=>(
                     <TouchableOpacity>
-                        hello
+                        <Text>hello</Text>
                     </TouchableOpacity>
                 ),
                 headerRight:()=>(
                     <TouchableOpacity>
-                        left
+                        <Text>hello</Text>
                     </TouchableOpacity>
                 )
             }}
@@ -29,7 +55,7 @@ export default function Layout(){
             <Tabs.Screen name="index" 
                 options={{
                     tabBarIcon: ({ color, size , focused }) => (
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{router.push('/(auth)/verification')}}>
                             <AntDesign name="home" size={24} color={focused?COLORS.black:COLORS.gray}  />
                         </TouchableOpacity>
                     ),

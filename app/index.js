@@ -29,7 +29,7 @@ const index = () => {
 
         <View style={{flexDirection:"row",width:"100%",justifyContent:"space-around",paddingVertical:32}}>
             <TouchableOpacity  style={{backgroundColor:COLORS.primary,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
-            <TouchableOpacity onPress={()=>router.push("/home/step2")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
+            <TouchableOpacity onPress={()=>router.push("/(tabs)/search")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
             <TouchableOpacity onPress={()=>router.push("/home/step3")}  style={{backgroundColor:COLORS.white,borderColor:COLORS.primary,borderWidth:1,width:116,height:12,borderRadius:BORDER_RADIUS.large}}></TouchableOpacity>
         </View>
 
@@ -71,10 +71,10 @@ const index = () => {
             <View 
                 style={{width:"100%",height:"100%",flex:1,justifyContent:"center",flexDirection:"column",alignItems:"center",gap:16
             }}>
-                <TouchableOpacity style={[authStyles.button,authStyles.buttonLarge]}>
+                <TouchableOpacity style={[authStyles.button,authStyles.buttonLarge]} onPress={()=>router.push("/(auth)/register")}>
                     <Text style={authStyles.buttonText}>Register</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]}>
+                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]} onPress={()=>router.push("/(auth)/login")}>
                     <Text style={authStyles.buttonOutlineText}>Already have an account</Text>
                 </TouchableOpacity>
             </View>

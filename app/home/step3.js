@@ -67,10 +67,10 @@ const index = () => {
             <View 
                 style={{width:"100%",height:"100%",flex:1,justifyContent:"center",flexDirection:"column",alignItems:"center",gap:16
             }}>
-                <TouchableOpacity style={[authStyles.button,authStyles.buttonLarge]}>
+                <TouchableOpacity style={[authStyles.button,authStyles.buttonLarge]} onPress={()=>router.push("/(auth)/register")}>
                     <Text style={authStyles.buttonText}>Register</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]}>
+                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]} onPress={()=>router.push("/(auth)/login")}>
                     <Text style={authStyles.buttonOutlineText}>Already have an account</Text>
                 </TouchableOpacity>
             </View>

@@ -21,8 +21,61 @@ const authStyles = StyleSheet.create({
       alignItems:"center",
       position:"relative"
     },
+    smallInput:{
+      borderRadius:BORDER_RADIUS.small,
+      borderWidth:1,
+      borderColor:COLORS.gray,
+      paddingHorizontal:SPACING.small,
+      paddingVertical:SPACING.small,
+      fontSize:SIZES.medium,
+      color:COLORS.gray2,
+      width:40,
+      height:40,
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"center",
+      textAlign:"center"
+    },
+    startContainer: {
+      flex: 1,
+      backgroundColor: COLORS.white,
+      paddingHorizontal:24,
+      paddingVertical:30,
+      justifyContent:"start",
+      alignItems:"center",
+      position:"relative"
+    },
+    simpleContainer:{
+      flex: 1,
+      backgroundColor: COLORS.white,
+      justifyContent:"center",
+      alignItems:"center",
+      position:"relative"
+    }
+    ,
+    containerBetween:{
+      backgroundColor: COLORS.white,
+      justifyContent:"space-between",
+      alignItems:"center",
+      position:"relative"
+    }
+    ,
+    containerAround:{
+      backgroundColor: COLORS.white,
+      justifyContent:"space-around",
+      alignItems:"center",
+      position:"relative"
+    },
     verticalContainer: {
       flex: 1,
+      backgroundColor: COLORS.white,
+      justifyContent:"center",
+      alignItems:"start",
+      position:"relative",
+      flexDirection:"column",
+      paddingBottom:40
+    },
+    simpleVerticalContainer: {
       backgroundColor: COLORS.white,
       justifyContent:"center",
       alignItems:"start",
@@ -38,10 +91,12 @@ const authStyles = StyleSheet.create({
       textAlign: 'center',
     },
     input: {
-      backgroundColor: COLORS.gray2,
+      backgroundColor: "transparent",
+      borderWidth:1,
+      width:346,
       borderRadius: BORDER_RADIUS.medium,
       paddingHorizontal: SPACING.medium,
-      paddingVertical: SPACING.small,
+      paddingVertical: SPACING.medium,
       marginBottom: SPACING.medium,
       fontFamily: FONT.regular,
       fontSize: SIZES.medium,
@@ -117,7 +172,15 @@ const authStyles = StyleSheet.create({
       paddingVertical: SPACING.small,
       alignItems: 'center',  
       justifyContent: 'center'   
-    },     
+    },   
+    buttonFilledBlackLarge: {    
+      backgroundColor: COLORS.black,   
+      borderRadius: BORDER_RADIUS.small,  
+      paddingHorizontal: SPACING.large,
+      paddingVertical: SPACING.large,
+      alignItems: 'center',  
+      justifyContent: 'center'   
+    },    
     buttonFilledBlackText: {
       fontFamily: FONT.medium,  
       fontSize: SIZES.medium,

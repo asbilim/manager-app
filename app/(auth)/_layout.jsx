@@ -1,17 +1,15 @@
 import { Stack } from "expo-router"
 import { useFonts } from "expo-font"
-import { useState } from "react"
 import * as SplashScreen from "expo-splash-screen"
-
 
 
 export default function Layout(){
 
     
     const [fonts] = useFonts({
-        Regular:require("../assets/fonts/Apercu-Regular.otf"),
-        Medium:require("../assets/fonts/Apercu-Medium.otf"),
-        Bold:require("../assets/fonts/Apercu-Bold.otf")
+        Regular:require("../../assets/fonts/Apercu-Regular.otf"),
+        Medium:require("../../assets/fonts/Apercu-Medium.otf"),
+        Bold:require("../../assets/fonts/Apercu-Bold.otf")
     })
 
     SplashScreen.preventAutoHideAsync()
