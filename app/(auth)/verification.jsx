@@ -59,7 +59,7 @@ const index = () => {
 
         {/* let's write for the middle of the page */}
 
-        <View style={[authStyles.simpleVerticalContainer,{gap:4,borderRadius:BORDER_RADIUS.medium,borderWidth:1,borderColor:COLORS.primary,width:384,height:180,paddingVertical:40,paddingHorizontal:19,alignItems:"center",justifyContent:"start"}]}>
+        <View style={[authStyles.simpleVerticalContainer,{gap:4,borderRadius:BORDER_RADIUS.medium,borderWidth:1,borderColor:COLORS.primary,width:384,height:180,paddingVertical:40,paddingHorizontal:19,alignItems:"center",justifyContent:"flex-start"}]}>
             
             <Text style={homeStyles.cardTitle}>Enter Verification Code</Text>
             <View style={[authStyles.containerAround,{flexDirection:"row",height:57,width:346,borderRadius:BORDER_RADIUS.medium}]}>

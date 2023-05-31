@@ -10,24 +10,22 @@ import { COLORS ,BORDER_RADIUS, SIZES} from '../../constants'
 import { useRouter } from 'expo-router'
 import { logo } from '../../constants/image'
 import { TextInput } from 'react-native'
-import { ScrollView } from 'react-native'
-
-
-
+import { KeyboardAvoidingView } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 
 
 const index = () => {
 
   const router = useRouter()
+  
 
 
   return (
     
-    <SafeAreaView style={authStyles.startContainer} >
-
-
+  
+    <SafeAreaView style={[authStyles.startContainer,{height:"100%"}]} >
         {/* let's add the image logo */}
-
+        
             <View style={[{backgroundColor:"transparent",justifyContent:"center",alignItems:"center"}]}>
                 <Image source={logo} style={{width:120,height:120,resizeMode:"contain"}} />
                 <View style={{flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
@@ -57,14 +55,14 @@ const index = () => {
             <View style={{justifyContent:"start",width:"100%",paddingVertical:SIZES.medium}}>
                 <Text style={{fontSize:SIZES.large}}>Personal details</Text>
             </View>
-            <View style={[authStyles.verticalContainer,{gap:4,justifyContent:"flex-start"}]}>
+            <KeyboardAvoidingView style={[authStyles.verticalContainer,{gap:4,justifyContent:"flex-start"}]}>
                 <TextInput placeholder='Username' style={authStyles.input} />
                 <TextInput placeholder='Email' style={authStyles.input} />
                 <TextInput placeholder='Password' secureTextEntry style={authStyles.input} />
-            </View>
+            </KeyboardAvoidingView>
         </View>
 
-      
+    
 
         {/* let's write for the middle of the page */}
 
@@ -80,6 +78,7 @@ const index = () => {
             </View>
         </View>
     </SafeAreaView>
+
   )
 }
 

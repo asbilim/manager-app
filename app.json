@@ -5,6 +5,12 @@
       "bundler": "metro"
     },
     "name": "password-manager",
-    "slug": "password-manager"
+    "slug": "password-manager",
+    "icon":"./assets/icon.png",
+    "splash":{
+      "image":"./assets/splash.png",
+      "resizeMode":"contain",
+      "backgroundColor":"#fff"
+    }
   }
 }
