@@ -9,8 +9,8 @@ import { tick } from '../constants/image'
 import { Image } from 'react-native'
 import { COLORS ,BORDER_RADIUS} from '../constants'
 import { useRouter } from 'expo-router'
-
-
+import { useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 
@@ -19,6 +19,21 @@ import { useRouter } from 'expo-router'
 const index = () => {
 
   const router = useRouter()
+
+
+    const handleConnected = async () =>{
+        const isConnected = await AsyncStorage.getItem("isConnected")
+        
+        if(isConnected != "true"){
+            return router.push("/(auth)/")
+        }
+
+    }
+
+
+    useEffect(()=>{
+        handleConnected()
+    },[])
 
 
 

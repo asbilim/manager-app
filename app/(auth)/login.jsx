@@ -10,29 +10,83 @@ import { COLORS ,BORDER_RADIUS, SIZES} from '../../constants'
 import { useRouter } from 'expo-router'
 import { logo } from '../../constants/image'
 import { TextInput } from 'react-native'
-import useAuth from '../../hooks/useAuth'
-import { useState } from 'react'
-import { modalStyles } from '../../styles/modal'
-import { Modal } from 'react-native'
+import { useState,useEffect } from 'react'
+import ToastManager, {Toast} from 'toastify-react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { sleep } from '../../hooks/utils'
+
 
 
 const index = () => {
 
   const router = useRouter()
-  const {isLoggedIn,user,login,logout,register} = useAuth()
 
   const [username, setUsername] = useState(username=>"")
   const [password, setPassword] = useState(password=>"")
   
-  const formatUsername = (user,pass) =>{
-    return {"username":user,"password":pass}
+
+    const handleConnected = async () =>{
+        const isConnected = await AsyncStorage.getItem("isConnected")
+        
+        if(isConnected == "true"){
+            return router.push("/(tabs)/")
+        }
+
+    }
+
+    useEffect(() => {
+      handleConnected()
+    }, [])
+    
+
+  const handleSubmit = async (user,pass)=>{
+
+    const userData = JSON.stringify({"username":user,"password":pass})
+    console.log(userData)
+
+    const response = await fetch('http://192.168.42.198:8000/authentication/api/token/',{
+        method:'POST',
+        headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+        },
+        body:userData
+    })
+
+    if(response.status == 400){
+        return Toast.error("Please enter valid datas")
+    }
+    if(response.status == 401){
+        return Toast.error("username/password incorrect")
+    }
+    if(response.status == 200){
+        const data = await response.json()
+        AsyncStorage.setItem('userToken',data.access)
+        AsyncStorage.setItem('isConnected',"true")
+        AsyncStorage.setItem('username',user)
+        Toast.success("Login successful")
+        await sleep(1);
+        Toast.info("you will be redirected ")
+        await sleep(2);
+        router.push('/(tabs)/')
+    }
+
+    
+
+    return Toast.error("something went wrong")
+
+
   }
+
+  
 
   return (
     
     <SafeAreaView style={authStyles.startContainer} >
         
         {/* let's add the image logo */}
+
+            <ToastManager />
 
             <View style={[{backgroundColor:"transparent",justifyContent:"center",alignItems:"center"}]}>
                 <Image source={logo} style={{width:120,height:120,resizeMode:"contain"}} />
@@ -63,9 +117,9 @@ const index = () => {
             <View style={{justifyContent:"start",width:"100%",paddingVertical:SIZES.medium}}>
                 <Text style={{fontSize:SIZES.large}}>Personal details</Text>
             </View>
-            <View style={{justifyContent:"center",width:"100%",paddingVertical:SIZES.small}}>
+            {/* <View style={{justifyContent:"center",width:"100%",paddingVertical:SIZES.small}}>
                 <Text style={{fontSize:SIZES.large,color:COLORS.error}}>Incorrect username or password</Text>
-            </View>
+            </View> */}
             <View style={[authStyles.verticalContainer,{gap:4,justifyContent:"flex-start"}]}>
                 <TextInput placeholder='Username' defaultValue={username} style={authStyles.input} onChangeText={(e)=>{setUsername(username=>e)}} />
                 <TextInput placeholder='Password' defaultValue={password} secureTextEntry onChangeText={(e)=>{setPassword(username=>e)}} style={authStyles.input} />
@@ -82,7 +136,7 @@ const index = () => {
             <View 
                 style={{width:"100%",height:"100%",flex:1,justifyContent:"center",flexDirection:"column",alignItems:"center",paddingBottom:15
             }}>
-                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]} onPress={()=>console.log(formatUsername(username,password))}>
+                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]} onPress={()=>handleSubmit(username,password)}>
                     <Text style={authStyles.buttonOutlineText}>Login</Text>
                 </TouchableOpacity>
             </View>

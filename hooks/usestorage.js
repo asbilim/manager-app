@@ -40,7 +40,7 @@ function useAsyncStorage(key) {
   }
 
   // Return the item and the functions as an array
-  return [storageItem, updateItem, clearItem];
+  return {storageItem, updateItem, clearItem};
 }
 
 export default useAsyncStorage;

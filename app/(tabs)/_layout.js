@@ -7,11 +7,27 @@ import { useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen"
 import { useFonts } from "expo-font";
 import { Text } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect } from "react";
 
 
 export default function Layout(){
 
-    const router = useRouter();
+    const router = useRouter()
+
+    const handleConnected = async () =>{
+        const isConnected = await AsyncStorage.getItem("isConnected")
+        
+        if(isConnected != "true"){
+            return router.push("/(auth)/")
+        }
+
+    }
+
+
+    useEffect(()=>{
+        handleConnected()
+    },[])
 
     const [fonts] = useFonts({
         Regular:require("../../assets/fonts/Apercu-Regular.otf"),
@@ -41,15 +57,10 @@ export default function Layout(){
             screenOptions={{
                 headerShown:true,
                 headerLeft:()=>(
-                    <TouchableOpacity>
-                        <Text>hello</Text>
+                    <TouchableOpacity style={{padding:12}}>
+                        <AntDesign name="user" size={24} color="black" />
                     </TouchableOpacity>
                 ),
-                headerRight:()=>(
-                    <TouchableOpacity>
-                        <Text>hello</Text>
-                    </TouchableOpacity>
-                )
             }}
         >
             <Tabs.Screen name="index" 
@@ -59,7 +70,7 @@ export default function Layout(){
                             <AntDesign name="home" size={24} color={focused?COLORS.black:COLORS.gray}  />
                         </TouchableOpacity>
                     ),
-                    tabBarShowLabel:false
+                    tabBarShowLabel:false,
                 }}
             />
             <Tabs.Screen name="analyze" 
