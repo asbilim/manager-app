@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { authStyles } from '../styles/auth'
 import { viewStyles } from '../styles/view'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -18,22 +18,28 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const index = () => {
 
+  const [connected,setConnected] = useState(connected=>false)
+
   const router = useRouter()
 
 
     const handleConnected = async () =>{
         const isConnected = await AsyncStorage.getItem("isConnected")
         
+        
         if(isConnected != "true"){
-            return router.push("/(auth)/")
+            router.push("/(auth)/")
         }
 
     }
 
 
-    useEffect(()=>{
+    useEffect(async ()=>{
+        const isConnected = await AsyncStorage.getItem("isConnected")
+        setConnected(connected=>isConnected)
         handleConnected()
     },[])
+
 
 
 
@@ -86,10 +92,22 @@ const index = () => {
             <View 
                 style={{width:"100%",height:"100%",flex:1,justifyContent:"center",flexDirection:"column",alignItems:"center",gap:16
             }}>
-                <TouchableOpacity style={[authStyles.button,authStyles.buttonLarge]} onPress={()=>router.push("/(auth)/register")}>
+                <TouchableOpacity style={[authStyles.button,authStyles.buttonLarge]} onPress={()=>{
+                    connected ? (
+                        router.push('/(tabs)/')
+                        ):(
+                        router.push("/(auth)/register")
+                    )
+                }}>
                     <Text style={authStyles.buttonText}>Register</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]} onPress={()=>router.push("/(auth)/login")}>
+                <TouchableOpacity style={[authStyles.buttonOutline,authStyles.buttonLarge]} onPress={()=>{
+                    connected ? (
+                        router.push('/(tabs)/')
+                        ):(
+                        router.push("/(auth)/login")
+                    )
+                }}>
                     <Text style={authStyles.buttonOutlineText}>Already have an account</Text>
                 </TouchableOpacity>
             </View>

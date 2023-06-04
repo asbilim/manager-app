@@ -66,7 +66,7 @@ export default function Layout(){
             <Tabs.Screen name="index" 
                 options={{
                     tabBarIcon: ({ color, size , focused }) => (
-                        <TouchableOpacity onPress={()=>{router.push('/(auth)/verification')}}>
+                        <TouchableOpacity>
                             <AntDesign name="home" size={24} color={focused?COLORS.black:COLORS.gray}  />
                         </TouchableOpacity>
                     ),

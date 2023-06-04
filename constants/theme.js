@@ -4,6 +4,10 @@ const COLORS = {
   // Primary color.
   primary: "#4B0082",
 
+  //Orange color.
+
+  orange: "#F8981D",
+
   // Secondary color.
   secondary: "#7B68EE",
 

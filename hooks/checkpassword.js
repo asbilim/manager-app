@@ -3,15 +3,16 @@ const WEAK_RANGE = [0, 20];
 const RISK_RANGE = [21, 40];
 const STRONG_RANGE = [41, 60];
 const SAFE_RANGE = [61, 80];
-const REPEAT_PENALTY = 2;
+const REPEAT_PENALTY = 5;
 const MAX_PENALTY = 10;
 const TYPE_BONUS = 5;
 
 export default function checkPassword(password) {
   // Any password shorter than 12 characters is considered 'risk'
   if (password.length < 12) {
-    return { verdict: 'risk', score: RISK_RANGE[1] };
+    return { verdict: 'risk', score: Math.ceil((password.length * 40)/12)  };
   }
+
 
   // Base score is the length of the password
   let finalScore = password.length;
@@ -82,9 +83,6 @@ const SYMBOLS = "!@#$%^&*()_+-=[]{};:'\"\\|,./<>?";
 
 export function generatePassword(length=12, addDigits=true, addSymbols=true, lowercase=true, uppercase=true) {
   // Validate the length parameter
-  if (length < 12) {
-    throw new Error("Password length must be at least 12");
-  }
 
   // Build the character pool based on the criteria
   let pool = "";

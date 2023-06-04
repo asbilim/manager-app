@@ -29,7 +29,7 @@ const index = () => {
         const isConnected = await AsyncStorage.getItem("isConnected")
         
         if(isConnected == "true"){
-            return router.push("/(tabs)/")
+            router.push("/(tabs)/")
         }
 
     }
