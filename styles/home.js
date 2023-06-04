@@ -12,14 +12,14 @@ const homeStyles = StyleSheet.create({
       fontFamily: FONT.bold,
       fontSize: SIZES.xxLarge,
       color: COLORS.primary,
-      marginBottom: SPACING.medium,
+      marginBottom: SPACING.small,
       textAlign: 'center',
     },
     subtitle: {
       fontFamily: FONT.regular,
       fontSize: SIZES.medium,
       color: COLORS.gray,
-      marginBottom: SPACING.medium,
+      marginBottom: SPACING.small,
       textAlign: 'center',
     },
     cardContainer: {
@@ -41,7 +41,7 @@ const homeStyles = StyleSheet.create({
     cardSubtitle: {
       fontFamily: FONT.regular,
       fontSize: SIZES.medium,
-      fontWeight:SIZES.small,
+      fontWeight:600,
       color: COLORS.gray,
       marginBottom: SPACING.medium,
     },
@@ -49,7 +49,7 @@ const homeStyles = StyleSheet.create({
       fontFamily: FONT.regular,
       fontSize: SIZES.medium,
       color: COLORS.black,
-      fontWeight:SIZES.xSmall
+      fontWeight:400
     },
 });
 
